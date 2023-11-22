@@ -1,0 +1,78 @@
+**-- OOP --**
+
+* a software contains some opjects and an object contains some data & functions.
+
+* when we make a software or we do programming. so what are the main elements of programming ?
+1. data - calles property
+2. functions - called behavour
+
+** principles of OOP **
+1. Abstraction - when we buy a car, we don't need to know how car works, we just see the Abstraction like gear, staring etc. so, Abstraction means show the user some functions , user don't need to know how that functions works.
+
+* when we talk about OOP, its just for programmers, programmers means I am the user of that OOP functions.
+* class helps us for achiving Abstractions.
+* Abstraction saves us for mishanding. some people say for security but not that. I am programmer and i am writing class so why comes security issue. its all about mishanding. ex: when we use CONST in our programming.
+
+2. Incapsulation - we make data as private and functions as public.
+
+* Abstraction and Incapsulation are internally connected. same as Inheritance and Polymorphism are internally connected.
+
+3. Inheritance - suzuki, totyota its inherit in itself the car functions with its extra features
+4. Polymorphism - when we drive suzuki, we say we drive car.
+
+** class vs object **
+
+* class means classification. we clasify everything in the world.
+* class is a defination and object is an instance.
+*  writing the class is different and using the class is different. we create class based on data and functions first. then we use that class for making object inside main function.
+
+* functions not occupy any memory
+* what we write inside class by default it is private.
+* data should be always private.
+
+** data hiding **
+
+* property functions two types
+1. accessor - getxxx function
+2. mutator - setxxx function
+
+* if i write get & set function then the property is read & writable.
+* if i write only get then it is only readable
+* if i write only set then it is only writable.
+
+** constructor **
+
+* when we declare a class variable then our data type inside class occupy memory inside stack. but how ?
+there is a "default constructor" also called "built in constructor" function inside class. and we can write our own constructor.
+
+* there are 3 different type of constructor.
+1. not-parameterized constructor also called default constructor or compiler provided constructor.
+2. parameterized constructor
+3. copied constructor
+
+* same as there are three types of buying something from market. ex: pizza
+1. I want a pizza. usual pizza will be delivered
+2. I want a pizza. length 5, height 10. (parameterized)
+3. I brought a pizza to the market and tell , I want this type of pizza. (copy constructor)
+
+** type of functions in claass **
+1. parameterized functions
+2. non parameterized function
+3. accessor function
+4. mutator function
+5. facilatator function - ex: r1.area();
+
+** scope resolution **
+
+* inline function - if we write function inside class then the function exist into the main function. (inline function not should have any comples logic)
+* if we write function outside the class then when we call the function , the function occupy its own stack outside the main function stack.
+
+** if we want to write a function outside the class and make it to inline, then we have to write "inline" before the function declaration. ex: inline int area();
+
+
+** struct vs class **
+
+* struct in c language also. but in c ,there are only data members no function available there.
+
+* difference between struct and class *
+1. data members inside struc by default public but inside class by default private.

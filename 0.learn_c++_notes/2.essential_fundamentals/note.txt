@@ -1,0 +1,75 @@
+**-- How computer works --**
+computer use binary system for its work. since it is an electronic device, it works by voltage.
+low voltage means - 0, and high voltage means 1
+
+** 
+CPU - central processing unit (heart of the computer)
+cpu has two parts : 
+1. ALU - arithmetical & logical units - +, -, *, /, % , and , or , not , < , >
+2. CU - control unit - there are other thing to control input output and read files etc. that's why there are seperate unit called control unit.
+
+** 
+HDD - hard disks
+hard disks contain files.
+there are two type of files: 
+1. program files - notepad.exe
+2. data files - file.txt
+
+** 
+whatever the program we run, they are brought to the main memory from hard disk.
+
+**
+input accesories like keyboard, mouse has their own memory called input buffer.
+output accesories like monitor has also their own memory called output buffer.
+
+**-- Number system --** 
+there are 4 number system : 
+1. binary - 0,1
+2. decimal - 0,1,2,3,4,5,6,7,8,9
+3. octal - 0,1,2,3,4,5,6,7
+4. hexadecimal - 0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F
+
+**
+convert decimal to  binary - take every remainder after dividing every time the decimal number by two. ex: 156 -> 0011110 
+
+**
+convert binary to decimal - 0110 -> 2^3 * 0 +  2^2 * 1 + 2^1 * 0 + 2^0 * 1 ->  5
+
+** what is programm **
+computer usually we use for computation. then the question arise that why we don't use calculator 
+for cumputation. so, the answer is we can basic computation by calculator but this is not a programmable device, example it don't know how to calculate the average etc. so, we need to use some device that we can give it some procedure and instructions. that's why we use computer.
+
+* a program is contain - data and instruction
+
+* now the problem is computer only know binary language. and we know example engilsh languge, so we need a programming language for make computer understand our instructions.
+
+**-- compiler vs interpreter --**
+
+1. compiler doesnot take the reponsibility of the code execution but interpreter does.
+
+* compiler language - c++ 
+compiler language generate mechine code if there is no errors in my code file. then it creates myFile.exe file in our hard disks.
+
+** compiler
+1. compiler or translation of source code to mechine code does by only once.
+2. compiler generates the executable file.
+3. when we run the program, we don't need the compiler.
+4. if there is any error in our soruce code, compiler don't generate it to mechine code.
+
+** interpreter
+1. it will not make different file like .exe file.
+2. compiler only translate but not execute but chrome (interpreter) translate and execute also.
+2, we don't need compiler to run our executable code. but whenever we want to run my.js file we need chrome.
+3. compile program run independently but interpreter program run inside interpreter.
+4. compiler program are fast because they are independent.
+5. interpreter program are easy to write.
+
+** hybrid 
+compiler compile into byte code (error free code) then it convert into jvm code(mechine code).
+
+**-- operating system --**
+
+operating system is a master programm, it utilize all the resources (ram, storage, main memory, printer , keyboard etc) of your computer system and provide services to the user.it will benefit the user.
+
+** operating system execution
+when we open a device , cpu take the operating windows.exe file that availabe in our hard disk and run this.

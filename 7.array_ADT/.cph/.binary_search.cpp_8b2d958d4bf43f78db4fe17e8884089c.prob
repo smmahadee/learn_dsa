@@ -1,0 +1,1 @@
+{"name":"Local: binary_search","url":"/Users/mahadee/Personal/Projects/learn_dsa/7.array_ADT/binary_search.cpp","tests":[{"id":1700544326070,"input":"5 4\n1 2 3 4 5","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/mahadee/Personal/Projects/learn_dsa/7.array_ADT/binary_search.cpp","group":"local","local":true}

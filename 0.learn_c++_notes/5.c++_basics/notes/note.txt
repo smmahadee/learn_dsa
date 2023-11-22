@@ -1,0 +1,43 @@
+ **-- data types --**
+
+ * there are two types of data we use our daily life.
+ 1. numeric data
+ 2. character type data / alphabetic type of data
+
+ * numeric data types - ex: 23, 43.22
+ we already know that, computer use binary system to represt a number, so how computer represent decimal number. that's why we need a differnt data type for decimal value. so, we can call, there are two types of numeric data type.
+
+ 1. integer
+ 2. floating
+
+ * character type data - ex: 'c', 'car'
+ 1. single character
+ 2. collection of characters
+
+
+ ** primitive data types **
+ 1. primitive
+ 2. user defined
+ 3. derived data type
+
+ * see screen shot for details
+
+ ** two types of modifiers
+ 1. unsigned
+ 2. long
+
+
+ * unsigned only use with integer and character. it means only positive value.
+ * long only use with integer, when we use "long int" it will take double byte , ex: if "int" takes 4 bytes then "long int" will take 8 byte. and long float take 10 byte. because, float takes 4 byte and double takes 8 byte. so, if we need more byte, then we have to use long float.
+
+ ** we can't perform mod operation in float number
+
+ **-- increment /decrement operator --**
+
+ * a = ++i;  - pre increment means, first increment and then assing the value.
+ * a = i++ - post increment means, first assign the value and then increment the value.
+
+ **-- enum & typedef --**
+
+ * enum = it is use for programmer, when we need a group of constants then we can use enum - ex: enum days {mon, tue, wed, thu, fri, sat, sun}; 
+ * typedef = it is use for code readability. ex: typedef int marks; marks m1 = 20;

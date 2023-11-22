@@ -1,0 +1,6 @@
+* array - is a collection of similiar data elements.
+
+* in c language - size of an array can only be dicided at compile time
+* in c++ language - size of an array can be dicided at run time
+
+* when we create an array inside stack or heap, they cann't be resized. in heap there is a way for resizing. but we can't resize an specific array.

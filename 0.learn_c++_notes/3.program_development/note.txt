@@ -1,0 +1,44 @@
+**-- programming paradigm --**
+1. Monolithic programming - this means the entire program code (source code) will be in single file/single piece/body. data & instructions are mixed in Monolithic program.
+
+* problems in Monolithic
+    1. only one man can write one program. like a painter, only one painter paint a photo. so,  programming was the beginning like an art.
+    2. page size will be very big
+    3. if there is only one error in the program , the entire program not execute.
+
+2. Procedural program/module based program - we can reuse the code and multiple developer can work.
+multiple function like multiple worker, and main function is like a manager. he organize and call all the functions.
+
+* benefit of module base program
+    1. reuse the code 
+    2. team of programmers can work 
+
+3. modular program (this is almost same of no 2.) - program contain data and instructions , so, in this programming paradigm, data will be a seperate block on top, and instructions will be inside different functions.
+
+4. object oriented programming - data & instructions will be only one block , called "class"
+
+* these paradigms will be benefit for programmers. and object oriented programming is much easier.
+
+**-- algorithm --**
+
+algorithm - is a step by step procedure for solving a computational problem.
+pseudocode - whatever we write to solve an algorithm called pseudocode.
+program - algorithm/pseudocode what we convert into program, here syntax is important.
+
+* we write algorithm using pseudocode and we write program using programming language. 
+
+**-- flowchart --**
+
+flowchart is used to show the control/flow of a program. see screenshot for details.
+
+**-- steps for program development & executaion --**
+
+1. Editing - we need IDE (integrated development invironment) - some IDE also install compliter itself but some IDE , we have to install compiler manually.
+2. compiling - compile the code and make test.exe file(executable file).
+3. linking library - header file/ library file linked to that executable file.
+4. loading - bring the executable file to the main memory by our operating system and link main funtion to the cpu and ask cpu to execute the file. we know that program contain data & instructions. so the data lives in the stack section of the main memory
+
+so, stack is useful for variable creation. and code section is useful for program itself. heap is used for dynamic memory allocation. 
+
+5. execution
+

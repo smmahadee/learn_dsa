@@ -1,0 +1,26 @@
+* ADT - means , represantation of data and set of operation on that data.
+
+* data
+1. array space
+2. size
+3. length
+
+* operations
+1. display
+2. add(x) / append(x)
+3. insert(index x)
+4. delete(index)
+5. search(x)
+6. get(index)
+7. set(index)
+8. max()/min()
+9. reverse()
+10. shift()/rotate()
+
+* binary operation in between two array
+1. append - means the array will be updated
+2. concat - No 3 array will be updated
+3. compare
+4. copy
+
+* merging array needs extra array. so we can combine those two array and put all element in third array.

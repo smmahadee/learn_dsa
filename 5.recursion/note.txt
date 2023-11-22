@@ -1,0 +1,30 @@
+** types of recursion **
+
+(lenear recursion)
+1. tail recursion
+2. head recursion
+
+(non lenear recursion)
+3. tree recursion
+4. indirect recursion
+5. nested recursion
+
+1. tail recursion - if a function calls itself and the calling statement is the last statement of that function. is there nothing after calling that function then its called tail recursion. 
+
+* in other words, tail recursion means it doesn't have to perform anything in his returning face
+* tail recursion can easily convert to loop
+* so, if you have tail recursion then best option is, convert it into a loop , because this is better at space complexity.
+
+2. head recursion - if a function calls itself and the calling statement is the first statement of that function. is there nothing before calling that function then its called head recursion. 
+
+* in other words, tail recursion means it doesn't have to perform anything in his calling face
+* tail recursion cann't easily convert to loop as it is. it can be converted but not easily.
+
+3. tree recursion  - if a function calls itself more than one time. then it is tree recursion.
+
+* the time complexity of tree recursion is - 2^0 + 2^1 + 2^2 + 2^n = (2^n+1) - 1 = O(2^n)
+* space complexity is - O(n);
+
+4. indirect recursion - if the function calls itself with the help of another function not directly calling. then it is indirect recursion.
+
+5. nested recursion - when a function calls itself and the parameter is the same function. that means recursion inside recursion. this nested recursion. ex ;fun(fun(n-1));

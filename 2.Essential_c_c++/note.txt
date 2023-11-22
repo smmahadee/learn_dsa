@@ -1,0 +1,32 @@
+* every pointer takes as a size of an integer. 
+* in c programming , we use malloc funtion to create dynamic memory in heap. and in c++ we use "new" keyword. ex: int * p = malloc(5 * sizeof(int)); int * p = new int[5];
+
+** parameter passing to funtion
+1. pass by value - c/c++
+2. pass by address - c/c++
+3. pass by refrence - only for c++
+
+* grouping data members called "structure" grouping some instructions called "functions". but in
+c++ we write everything in class
+
+** some types of programming
+1. monolithic programming
+2. modular based programming - this is the most updated feature in c language
+3. object oriented programming - this is supported by c++
+
+
+** REFERENCE VALUE ** 
+
+** call by refrence is just an alias for that variable - ex: int a = 20; int &r = a;
+* refrence variable doesnt take any extra memory 
+* call by refrence doesnt make any extra function stack inside memory. this is the part of that function who called that refrence function.
+* use "call by refrence" only for some line of code. don't use this for heavy function.
+
+** structure as parameter **
+
+*basically we can't send array as call by value, but if our structure contains an array then we can send that to a function as call by value.
+
+** template class **
+
+* why use this - suppose, we create a Arithmatic class for integer value calculation then if we need to calculate float value then if we create another class same as the previous. it is cumbursome. that's why we use generic classs.(template)
+

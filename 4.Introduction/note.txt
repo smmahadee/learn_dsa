@@ -1,0 +1,50 @@
+* Data structure means - arrangement of data so we can utilize operations on the data effeciently. inside the main memory during the execution of a program.
+
+* every program when it is executing it has to be inside main memory and every data we want to read or perform any operations it has to be inside main memory as well. so, when we design data effeciently then the application can access faster and more accurately. that is data structure.
+
+* data structure - arranging the data in the main memory with cpu
+* database - arranging the data in permanent storage (hard disk)
+
+**-- static memory and dynamic memory --**
+
+* memory is divided by bytes
+* a program uses the main memory by dividing the main memory into 3 section.
+1. code section
+2. stack
+3. heap
+
+* static memory - compiler set the memory for data members before code run. thats why its call static.
+* how much memroy occupy a function stack that is set by compiler
+
+* heap memory *
+1. heap memory is not organized.
+2. heap memory is used like a resource. one example for resource is : "printer" , we use printer and when we finish our tasks then we release the printer so, other computer also can use that printer. so, heap memory used like a resource.
+3. program doesn't access heap memory directly, it does by a pointer.
+4. when we allocate memory in heap, we have to delete that ourself.
+
+**-- type of data structures --**
+1. physical data structure. ex: array, linked list
+2. logical data structure. ex: stack, queues, tree, graph, hash table
+
+* linear data structure -
+1. stack - works in LIFO system ( last in first out)
+2. queues - works in FIFO system (first in first out)
+
+* non-linear data structure - tree, graph,
+* tabular data structure - hash table
+
+* physical data structure actually meant for holding the data.and we have those type of values we want to perform some insertion, deletion etc.now question is how we perform those action, what are the deciplines we follow, here comes logical data structure.
+
+* logical data structure implemented by using on of the physical data structure type. 
+
+**-- ADT ( abstract datatype ) --**
+
+* datatype - is the defining of data, that contains,
+1. representation of data - how that data allocating the memory , how many bytes takes etc.
+2. operation on data - what are the operations we can do on that data type.
+
+* abstract - means, when we do operations then we don't need to know how that operations works internally on that data type. those are hidden from us. and we can do that operations without knowing them. that's called abstract. 
+
+* abstract datatype - this is related to object oriented programming. so, we can create object by class and use them without knowing how that works internally.
+
+**-- time and space complexity --**
