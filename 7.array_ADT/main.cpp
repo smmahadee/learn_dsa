@@ -3,36 +3,37 @@
 using namespace std;
 
 class Array {
-   public:
-    int* arr;
+   private:
     int size;
     int length;
+    int* A;
 
-    void init(int* arr, int length, int size) {
-        // cin >> size >> length;
-        // arr = new int[size];
-        // for (int i = 0; i < length; i++) {
-        //     cin >> arr[i];
-        // }
-
-        this->size = size;
-        this->length = length;
-        this->arr = new int[size];
-
-        for (int i = 0; i < length; i++) {
-            this->arr[i] = arr[i];
-        }
+   public:
+    Array() {
+        size = 10;
+        length = 0;
+        A = new int[size];
     }
+
+    Array(int sz) {
+        size = sz;
+        length = 0;
+        A = new int[sz];
+    }
+
+    ~Array() { delete[] A; }
+
+    int getLength() { return length; }
 
     void display() {
         for (int i = 0; i < length; i++) {
-            cout << arr[i] << " ";
+            cout << A[i] << " ";
         }
         cout << endl;
     }
 
     void append(int el) {
-        arr[length] = el;
+        A[length] = el;
         length++;
     }
 
@@ -40,10 +41,10 @@ class Array {
         if (index > length) return false;
 
         for (int i = length; i > index; i--) {
-            arr[i] = arr[i - 1];
+            A[i] = A[i - 1];
         }
 
-        arr[index] = el;
+        A[index] = el;
 
         length++;
         return true;
@@ -52,7 +53,7 @@ class Array {
     bool remove(int index) {
         if (index >= length) return false;
         for (int i = index; i < length; i++) {
-            arr[i] = arr[i + 1];
+            A[i] = A[i + 1];
         }
         length--;
 
@@ -62,7 +63,7 @@ class Array {
     int lenearSearch(int el) {
         int flag = -1;
         for (int i = 0; i < length; i++) {
-            if (arr[i] == el) {
+            if (A[i] == el) {
                 flag = i;
                 break;
             }
@@ -79,10 +80,10 @@ class Array {
         while (low <= high) {
             int mid = (low + high) / 2;
 
-            if (arr[mid] == el) {
+            if (A[mid] == el) {
                 flag = mid;
                 break;
-            } else if (arr[mid] > el) {
+            } else if (A[mid] > el) {
                 high = mid - 1;
             } else {
                 low = mid + 1;
@@ -94,28 +95,28 @@ class Array {
 
     int getEl(int index) {
         if (index < 0 || index >= length) return -1;
-        return arr[index];
+        return A[index];
     }
 
     int setEl(int index, int el) {
         if (index < 0 || index >= length) return -1;
-        arr[index] = el;
-        return arr[index];
+        A[index] = el;
+        return A[index];
     }
 
-    int max() {
+    int maxArray() {
         int mx = INT_MIN;
         for (int i = 0; i < length; i++) {
-            if (arr[i] > mx) mx = arr[i];
+            if (A[i] > mx) mx = A[i];
         }
 
         return mx;
     }
 
-    int min() {
+    int minArray() {
         int mn = INT_MAX;
         for (int i = 0; i < length; i++) {
-            if (arr[i] < mn) mn = arr[i];
+            if (A[i] < mn) mn = A[i];
         }
 
         return mn;
@@ -124,7 +125,7 @@ class Array {
     long long int sum() {
         int sum = 0;
         for (int i = 0; i < length; i++) {
-            sum += arr[i];
+            sum += A[i];
         }
 
         return sum;
@@ -134,7 +135,7 @@ class Array {
         int i = 0;
         int j = length - 1;
         while (i < j) {
-            swap(arr[i], arr[j]);
+            swap(A[i], A[j]);
             i++;
             j--;
         }
@@ -142,24 +143,24 @@ class Array {
 
     void leftShift() {
         for (int i = 0; i < length; i++) {
-            arr[i - 1] = arr[i];
+            A[i - 1] = A[i];
         }
 
-        arr[length - 1] = 0;
+        A[length - 1] = 0;
     }
 
     void rightShift() {
         for (int i = length - 2; i >= 0; i--) {
-            arr[i + 1] = arr[i];
+            A[i + 1] = A[i];
         }
 
-        arr[0] = 0;
+        A[0] = 0;
     }
 
     int isSorted() {
         int flag = 1;
         for (int i = 0; i < length - 1; i++) {
-            if (arr[i] > arr[i + 1]) {
+            if (A[i] > A[i + 1]) {
                 flag = -1;
                 break;
             }
@@ -170,11 +171,11 @@ class Array {
 
     void insertElSortedPosition(int el) {
         int i = length - 1;
-        while (arr[i] > el) {
-            arr[i + 1] = arr[i];
+        while (A[i] > el) {
+            A[i + 1] = A[i];
             i--;
         }
-        arr[i + 1] = el;
+        A[i + 1] = el;
         length++;
     }
 
@@ -183,107 +184,299 @@ class Array {
         int j = length - 1;
 
         while (i < j) {
-            while (arr[i] < 0) i++;
-            while (arr[j] >= 0) j--;
-            if (i < j) swap(arr[i], arr[j]);
+            while (A[i] < 0) i++;
+            while (A[j] >= 0) j--;
+            if (i < j) swap(A[i], A[j]);
         }
     }
 
-    int* mergeArray(int* a, int m, int* b, int n) {
+    Array* mergeArray(Array arr2) {
         int i = 0, j = 0, k = 0;
-        int* newArr = new int[length * 2];
+        Array* arr3 = new Array(length + arr2.length);
 
-        while (i < m && j < n) {
-            if (a[i] <= b[j]) {
-                newArr[k++] = a[i];
+        while (i < length && j < arr2.length) {
+            if (A[i] <= arr2.A[j]) {
+                arr3->A[k++] = A[i];
                 i++;
             } else {
-                newArr[k++] = b[j];
+                arr3->A[k++] = arr2.A[j];
                 j++;
             }
         }
 
-        for (; i < m; i++) {
-            newArr[k++] = a[i];
+        for (; i < length; i++) {
+            arr3->A[k++] = A[i];
         }
 
-        for (; j < n; j++) {
-            newArr[k++] = b[j];
+        for (; j < arr2.length; j++) {
+            arr3->A[k++] = arr2.A[j];
         }
+
+        arr3->length = length + arr2.length;
+
+        return arr3;
+    }
+
+    Array* basicUnionSet(Array arr2) {
+        Array* arr3 = new Array(length + arr2.length);
+        int k = 0;
+
+        for (int i = 0; i < length; i++) {
+            arr3->A[k++] = A[i];
+        }
+
+        for (int i = 0; i < arr2.length; i++) {
+            int j;
+            for (j = 0; j < arr2.length; j++) {
+                if (arr2.A[i] == A[j]) break;
+            }
+
+            if (j == arr2.length) {
+                arr3->A[k++] = arr2.A[i];
+            }
+        }
+
+        arr3->length = length + arr2.length;
+
+        return arr3;
+    }
+
+    Array* optimizedUnionSet(Array arr2) {
+        int i = 0, j = 0, k = 0;
+
+        Array* arr3 = new Array(length + arr2.length);
+
+        while (i < length && j < arr2.length) {
+            if (A[i] < arr2.A[j]) {
+                arr3->A[k++] = A[i];
+                i++;
+            } else if (arr2.A[j] < A[i]) {
+                arr3->A[k++] = arr2.A[j];
+                j++;
+            } else {
+                arr3->A[k++] = A[i];
+                i++;
+                j++;
+            }
+        }
+
+        for (; i < length; i++) {
+            arr3->A[k++] = A[i];
+        }
+
+        for (; j < arr2.length; j++) {
+            arr3->A[k++] = arr2.A[j];
+        }
+
+        arr3->length = length + arr2.length;
+
+        return arr3;
+    }
+
+    Array* basicIntersection(Array arr2) {
+        int mx = max(length, arr2.length);
+        int mn = min(length, arr2.length);
+
+        int* maxArr = mx == length ? A : arr2.A;
+        int* minArr = mn == length ? A : arr2.A;
+
+        Array* arr3 = new Array(mx);
+        int k = 0;
+
+        for (int i = 0; i < mx; i++) {
+            for (int j = 0; j < mn; j++) {
+                if (maxArr[i] == minArr[j]) {
+                    arr3->A[k++] = maxArr[i];
+                }
+            }
+        }
+
+        arr3->length = k;
+
+        return arr3;
+    }
+
+    Array* optimizedIntersection(Array arr2) {
+        int i = 0, j = 0, k = 0;
+
+        Array* arr3 = new Array(length + arr2.length);
+
+        while (i < length && j < arr2.length) {
+            if (A[i] < arr2.A[j]) {
+                i++;
+            } else if (arr2.A[j] < A[i]) {
+                j++;
+            } else {
+                arr3->A[k++] = A[i];
+                i++;
+                j++;
+            }
+        }
+
+        arr3->length = k;
+
+        return arr3;
+    }
+
+    Array* basicDifference(Array arr2) {
+        Array* arr3 = new Array[length];
+        int k = 0;
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < arr2.length; j++) {
+                if (A[i] == arr2.A[j]) {
+                    arr3->A[k++] = A[i];
+                }
+            }
+        }
+
+        arr3->length = k;
+
+        return arr3;
+    }
+
+    Array* optimizedDifference(Array arr2) {
+        int i = 0, j = 0, k = 0;
+
+        Array* arr3 = new Array[length];
+
+        while (i < length && j < arr2.length) {
+            if (A[i] < arr2.A[j]) {
+                arr3->A[k++] = A[i];
+                i++;
+            } else if (arr2.A[j] < A[i]) {
+                j++;
+            } else {
+                i++;
+                j++;
+            }
+        }
+
+        arr3->length = k;
+
+        return arr3;
     }
 };
 
 int main() {
-    Array a;
-    Array b;
+    Array* arr;
 
-    // ARRAY INITIALIZATION
-    int a1[] = {10, 20, 30, 40, 50};
-    a.init(a1, 5, 20);
+    int size;
+    cin >> size;
+    arr = new Array(size);
 
-    int a2[] = {15, 25, 35, 45, 55};
-    b.init(a2, 5, 20);
+    int arrLength = arr->getLength();
 
-    // ADD AN ELEMENT TO THE LAST OF THE ARRAY
-    // a.append(100);
-
-    // INSERT ELEMENT TO SPECIFIC INDEX
-    // a.insert(5, 500);
-
-    // DELETE SPECIFIC INDEX ELEMENT
-    // a.remove(4);
-
-    // LENEAR SEARCH AN ELEMENT
-    // int index = a.lenearSearch(30);
-    // cout<<index;
-
-    // binary search an element
-    // int index = a.binarySearch(10);
-    // cout << index;
-
-    // get element by index
-    // cout << a.getEl(3);
-
-    // set(replace) element by index
-    // a.setEl(3, 100);
-
-    // GET MAX VALUE
-    // cout << a.max();
-
-    // get total value
-    // cout << a.min();
-
-    // get min value
-    // cout << a.sum();
-
-    // reverse array
-    // a.reverseArray();
-    // a.leftShift();
-    // a.rightShift();
-
-    // check if array sorted or not
-    // int result = a.isSorted();
-    // cout << result;
-
-    // Insert element in a sorted position of a sorted array
-    // a.insertElSortedPosition(45);
-
-    // left side all negative number and right side all positive number
-    // a.swapPositiveNegativeNum();
-
-    // merging array and return third array with all elements
-    int * newArr = a.mergeArray(a.arr, a.size, b.arr, b.size);
-    for (int i = 0; i < ; i++)
-    {
-        /* code */
+    for (int i = 0; i < arrLength; i++) {
+        int el;
+        cin >> el;
+        arr->append(el);
     }
-    
 
-    // DISPLAY THE ENITER ARRAY
-    cout << endl;
-    a.display();
-    cout << endl;
-    b.display();
+    // arr->display();
 
-    return 0;
+        // ADD AN ELEMENT TO THE LAST OF THE ARRAY
+        // a.append(100);
+
+        // INSERT ELEMENT TO SPECIFIC INDEX
+        // a.insert(5, 500);
+
+        // DELETE SPECIFIC INDEX ELEMENT
+        // a.remove(4);
+
+        // LENEAR SEARCH AN ELEMENT
+        // int index = a.lenearSearch(30);
+        // cout<<index;
+
+        // binary search an element
+        // int index = a.binarySearch(10);
+        // cout << index;
+
+        // get element by index
+        // cout << a.getEl(3);
+
+        // set(replace) element by index
+        // a.setEl(3, 100);
+
+        // GET MAX VALUE
+        // cout << a.maxArray();
+
+        // get minArray value
+        // cout << a.minArray();
+
+        // get total value
+        // cout << a.sum();
+
+        // reverse array
+        // a.reverseArray();
+        // a.leftShift();
+        // a.rightShift();
+
+        // check if array sorted or not
+        // int result = a.isSorted();
+        // cout << result;
+
+        // Insert element in a sorted position of a sorted array
+        // a.insertElSortedPosition(45);
+
+        // left side all negative number and right side all positive number
+        // a.swapPositiveNegativeNum();
+
+        // merging array and return third array with all elements
+        // int* newArr = a.mergeArray(a.arr, a.length, b.arr, b.length);
+        // for (int i = 0; i < a.length + b.length; i++) {
+        //     cout << newArr[i] << " ";
+        // }
+        // delete[] newArr;
+
+        // SET OPERATIONS
+
+        // basic union sets between two array
+        // int* newArr = a.basicUnionSet(a.arr, a.length, b.arr, b.length);
+        // for (int i = 0; i < a.length + b.length; i++) {
+        //     cout << newArr[i] << " ";
+        // }
+        // delete[] newArr;
+
+        // optimized union sets between two sorted array
+        // int* newArr = a.optimizedUnionSet(a.arr, a.length, b.arr, b.length);
+        // for (int i = 0; i < a.length + b.length; i++) {
+        //     cout << newArr[i] << " ";
+        // }
+        // delete[] newArr;
+
+        // basic intersection
+        // int* newArr = a.basicIntersection(a.arr, a.length, b.arr, b.length);
+        // for (int i = 0; i < a.length + b.length; i++) {
+        //     cout << newArr[i] << " ";
+        // }
+        // delete[] newArr;
+
+        // optimized intersection
+        // int* newArr = a.optimizedIntersection(a.arr, a.length, b.arr,
+        // b.length); for (int i = 0; i < a.length + b.length; i++) {
+        //     cout << newArr[i] << " ";
+        // }
+        // delete[] newArr;
+
+        // basic difference set
+        // int* newArr = a.basicDifference(a.arr, a.length, b.arr, b.length);
+        // for (int i = 0; i < a.length + b.length; i++) {
+        //     cout << newArr[i] << " ";
+        // }
+        // delete[] newArr;
+
+        // optimized difference set
+        // int* newArr = a.optimizedDifference(a.arr, b.arr);
+        // for (int i = 0; i < a.length + b.length; i++) {
+        //     cout << newArr[i] << " ";
+        // }
+        // delete[] newArr;
+
+        // DISPLAY THE ENITER ARRAY
+        // cout << endl;
+        // a.display();
+        // cout << endl;
+        // b.display();
+
+        return 0;
 }
