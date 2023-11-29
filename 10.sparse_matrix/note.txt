@@ -1,0 +1,6 @@
+* sparse matrix *
+
+* sparse matrix - where most of the element is zero.
+* we can store the non zero element of sparse matrix in two methods.
+    1. coordinate list/3 column representation
+    2. compressed sparse row

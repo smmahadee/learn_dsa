@@ -2,54 +2,68 @@
 
 using namespace std;
 
-class Diagonal {
+class Matrix {
    private:
-    int *A;
-    int n;
+    int *p;
+    int size;
 
    public:
-    Diagonal(int n) {
-        this->n = n;
-        A = new int[n];
+    Matrix() {
+        size = 2;
+        p = new int[size];
+    }
+
+    Matrix(int size) {
+        this->size = size;
+        p = new int[size];
+    }
+
+    ~Matrix() { delete[] p; }
+
+    void set(int i, int j, int el) {
+        if (i == j) {
+            p[i - 1] = el;
+        }
+    }
+
+    int get(int i, int j) {
+        if (i == j) {
+            return p[i - 1];
+        } else {
+            return -1;
+        }
     }
 
     void display() {
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
                 if (i == j) {
-                    cout << A[i] << " ";
+                    cout << p[i] << " ";
                 } else {
                     cout << 0 << " ";
                 }
             }
-
             cout << endl;
         }
-    };
+    }
 
-    int get(int i, int j) {
-        if (i == j) {
-            return A[i - 1];
-        } else {
-            return 0;
-        }
-    };
-
-    void set(int i, int j, int el) {
-        if (i == j) {
-            A[i - 1] = el;
-        }
-    };
-
-    ~Diagonal() { delete[] A; }
+    int getSize() { return size; }
 };
 
 int main() {
-    Diagonal m(4);
+    int size;
+    cin >> size;
 
-    m.set(1, 1, 5);
-    m.set(2, 2, 23);
-    m.set(3, 3, 52);
+    Matrix m(size);
+    for (int i = 1; i <= m.getSize(); i++) {
+        for (int j = 1; j <= m.getSize(); j++) {
+            int x;
+            cin >> x;
+            m.set(i, j, x);
+        }
+    }
+
+    // m.set(1, 1, 1);
 
     m.display();
 
