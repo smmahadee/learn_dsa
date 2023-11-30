@@ -22,15 +22,16 @@ class UperTri {
 
     void set(int i, int j, int el) {
         if (i <= j) {
-            int index = (i - 1) * size - (i - 2) * (i - 1) / 2 + (j - i);
+            int index = j * (j - 1) / 2 + i - 1;
             // cout << index << endl;
-            p[(i - 1) * size - (i - 2) * (i - 1) / 2 + (j - i)] = el;
+            p[index] = el;
         }
     }
 
     int get(int i, int j) {
         if (i <= j) {
-            return p[(i - 1) * size - (i - 2) * (i - 1) / 2 + (j - i)];
+            
+            return p[j * (j - 1) / 2 + i - 1];
         } else {
             return -1;
         }
@@ -40,11 +41,14 @@ class UperTri {
         for (int i = 1; i <= size; i++) {
             for (int j = 1; j <= size; j++) {
                 if (i <= j) {
-                    cout << p[(i - 1) * size - (i - 2) * (i - 1) / 2 + (j - i)]
-                         << " ";
+                    cout << p[j * (j - 1) / 2 + i - 1] << " ";
                 } else {
                     cout << 0 << " ";
                 }
+
+                // if(i == 1 && j == 4) {
+                //       cout << p[j * (j - 1) / 2 + i - 1] << " ";
+                // }
             }
             cout << endl;
         }
@@ -66,10 +70,11 @@ int main() {
         }
     }
 
+    cout<<m.get(1, 4);
     // m.set(1, 1, 12);
     // m.set(1, 2, 13);
 
-    m.display();
+    // m.display();
 
     return 0;
 }

@@ -2,48 +2,51 @@
 
 using namespace std;
 
-class UperTri {
+class Toeplitz_Matrix {
    private:
     int *p;
     int size;
 
    public:
-    UperTri() {
+    Toeplitz_Matrix() {
         size = 2;
-        p = new int[size * (size + 1) / 2];
+        p = new int[2 * size - 1];
     }
 
-    UperTri(int size) {
+    Toeplitz_Matrix(int size) {
         this->size = size;
-        p = new int[size * (size + 1) / 2];
+        p = new int[2 * size - 1];
     }
 
-    ~UperTri() { delete[] p; }
+    ~Toeplitz_Matrix() { delete[] p; }
 
     void set(int i, int j, int el) {
-        if (i <= j) {
-            int index = (i - 1) * size - (i - 2) * (i - 1) / 2 + (j - i);
-            // cout << index << endl;
-            p[(i - 1) * size - (i - 2) * (i - 1) / 2 + (j - i)] = el;
+        if (i == 1 && j >= i) {
+            p[j - i] = el;
+        }
+
+        if (i > 1 && j == 1) {
+            p[size + i - j - 1] = el;
         }
     }
 
     int get(int i, int j) {
+        int element = -1;
         if (i <= j) {
-            return p[(i - 1) * size - (i - 2) * (i - 1) / 2 + (j - i)];
+            element = p[j - i];
         } else {
-            return -1;
+            element = p[i - j - 1];
         }
+        return element;
     }
 
     void display() {
         for (int i = 1; i <= size; i++) {
             for (int j = 1; j <= size; j++) {
                 if (i <= j) {
-                    cout << p[(i - 1) * size - (i - 2) * (i - 1) / 2 + (j - i)]
-                         << " ";
+                    cout << p[j - i] << " ";
                 } else {
-                    cout << 0 << " ";
+                    cout << p[size + i - j - 1] << " ";
                 }
             }
             cout << endl;
@@ -57,7 +60,7 @@ int main() {
     int size;
     cin >> size;
 
-    UperTri m(size);
+    Toeplitz_Matrix m(size);
     for (int i = 1; i <= m.getSize(); i++) {
         for (int j = 1; j <= m.getSize(); j++) {
             int x;
@@ -66,10 +69,17 @@ int main() {
         }
     }
 
-    // m.set(1, 1, 12);
+    // m.set(1, 1, 6);
     // m.set(1, 2, 13);
+    // m.set(2, 1, 10);
+
+    // cout << m.get(3, 4);
+    // cout << m.get(4, 3);
 
     m.display();
+    // for (int i = 0; i < 2 * m.getSize() - 1; i++) {
+    //     cout << m.p[i] << " ";
+    // }
 
     return 0;
 }

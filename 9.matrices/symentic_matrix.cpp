@@ -2,37 +2,42 @@
 
 using namespace std;
 
-class UperTri {
+class Symentic_Matrix {
    private:
     int *p;
     int size;
 
    public:
-    UperTri() {
+    Symentic_Matrix() {
         size = 2;
         p = new int[size * (size + 1) / 2];
     }
 
-    UperTri(int size) {
+    Symentic_Matrix(int size) {
         this->size = size;
         p = new int[size * (size + 1) / 2];
     }
 
-    ~UperTri() { delete[] p; }
+    ~Symentic_Matrix() { delete[] p; }
 
     void set(int i, int j, int el) {
         if (i <= j) {
-            int index = (i - 1) * size - (i - 2) * (i - 1) / 2 + (j - i);
+            int index = j * (j - 1) / 2 + i - 1;
             // cout << index << endl;
-            p[(i - 1) * size - (i - 2) * (i - 1) / 2 + (j - i)] = el;
+            p[index] = el;
         }
     }
 
     int get(int i, int j) {
         if (i <= j) {
-            return p[(i - 1) * size - (i - 2) * (i - 1) / 2 + (j - i)];
+            return p[j * (j - 1) / 2 + i - 1];
         } else {
-            return -1;
+            // int temp = i;
+            // i = j;
+            // j = temp;
+
+            // return p[j * (j - 1) / 2 + i - 1];
+            return p[i * (i - 1) / 2 + j - 1];
         }
     }
 
@@ -40,8 +45,7 @@ class UperTri {
         for (int i = 1; i <= size; i++) {
             for (int j = 1; j <= size; j++) {
                 if (i <= j) {
-                    cout << p[(i - 1) * size - (i - 2) * (i - 1) / 2 + (j - i)]
-                         << " ";
+                    cout << p[j * (j - 1) / 2 + i - 1] << " ";
                 } else {
                     cout << 0 << " ";
                 }
@@ -57,7 +61,7 @@ int main() {
     int size;
     cin >> size;
 
-    UperTri m(size);
+    Symentic_Matrix m(size);
     for (int i = 1; i <= m.getSize(); i++) {
         for (int j = 1; j <= m.getSize(); j++) {
             int x;
@@ -68,8 +72,10 @@ int main() {
 
     // m.set(1, 1, 12);
     // m.set(1, 2, 13);
+    cout << m.get(3, 4);
+    cout << m.get(4, 3);
 
-    m.display();
+    // m.display();
 
     return 0;
 }
