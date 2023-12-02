@@ -1,0 +1,7 @@
+** linked list **
+
+* problem with arrays - we can't increase the size of an array. so, we are programmers we write for users, so user decides how many elements will be inserted in array at run time. but we have to give a size at compile time/coding time. that the problem with array.
+
+* difference between array and linked list
+1. array size can't increase. but linked list is easy.
+2. we creat array in stack & heap  but we create linked list in heap only.
