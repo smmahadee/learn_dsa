@@ -373,7 +373,7 @@ int main() {
         arr->append(el);
     }
 
-    // arr->display();
+    arr->display();
 
         // ADD AN ELEMENT TO THE LAST OF THE ARRAY
         // a.append(100);
