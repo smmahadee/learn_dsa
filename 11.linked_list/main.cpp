@@ -1,3 +1,5 @@
+#include <limits.h>
+
 #include <iostream>
 
 using namespace std;
@@ -197,25 +199,59 @@ void insert_in_sorted_list(Node *&head, int el) {
     }
 }
 
-
 void delete_node(Node *&head, int pos) {
+    if (pos == 1) {
+        Node *deleteNoe = head;
+        head = head->next;
+        delete deleteNoe;
+    } else {
+        Node *p = head;
+        Node *q = NULL;
+
+        for (int i = 0; i < pos - 1 && p; i++) {
+            q = p;
+            p = p->next;
+        }
+
+        if (p) {
+            Node *deleteNode = p;
+            q->next = p->next;
+            delete deleteNode;
+        }
+    }
+}
+
+bool is_sorted(Node *head) {
+    bool flag = true;
+
+    while (head->next != NULL) {
+        if (head->val > head->next->val) {
+            flag = false;
+            break;
+        }
+
+        head = head->next;
+    }
+
+    return flag;
+}
+
+void remove_duplicate(Node * head) {
     Node * p = head;
-    Node *q = NULL;
+    Node * q = p->next;
 
-    while(p  != NULL) {
-        q = p;
-        p = p->next;
+    while(q != NULL) {
+        if(p->val == q->val) {
+            p->next = q->next;
+            delete q;
+            q = p->next;
+        }else {
+            p = q;
+            q = q->next;
+        }
     }
 
-    if(q == NULL) {
-        cout<<"No element exist in list"<<endl;
-    }else if(q == head) {
-        Node * deletedNode = head;
-        q->next  = head;
-        delete deletedNode;
-    }else {
-        q.ne
-    }
+    cout<<"deleted"<<endl;
 }
 
 int main() {
@@ -232,6 +268,9 @@ int main() {
         cout << "6. Find max value of the list." << endl;
         cout << "7. Search an element in list." << endl;
         cout << "8. Insert in a sorted list." << endl;
+        cout << "9. Delete a node." << endl;
+        cout << "10.Check is the list sorted or not." << endl;
+        cout << "11.Remove duplicate element." << endl;
         cout << endl << "Choose an option: ";
 
         int op;
@@ -293,6 +332,22 @@ int main() {
             cin >> val;
 
             insert_in_sorted_list(head, val);
+        } else if (op == 9) {
+            cout << "Enter a position";
+            int pos;
+            cin >> pos;
+
+            delete_node(head, pos);
+        }else if(op == 10) {
+            bool result = is_sorted(head);
+
+            if(result) {
+                cout<<"The list is sorted"<<endl;
+            }else {
+                cout<<"The list is not sorted"<<endl;
+            }
+        }else if(op == 11) {
+            remove_duplicate(head);
         }
     }
 
