@@ -8,6 +8,7 @@
     "iostream": "cpp",
     "__split_buffer": "cpp",
     "vector": "cpp",
-    "ostream": "cpp"
+    "ostream": "cpp",
+    "new": "cpp"
   }
 }
