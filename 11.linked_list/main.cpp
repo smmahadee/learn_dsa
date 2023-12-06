@@ -28,12 +28,11 @@ void display_node(Node *head) {
 void display_node_recursively(Node *head) {
     if (head != NULL) {
         cout << head->val << " ";
-        head = head->next;
-        display_node_recursively(head);
+        display_node_recursively(head->next);
     }
 }
 
-void insert_at_tail(Node *&head, int val) {
+void insert_a_node(Node *&head, int val) {
     Node *newNode = new Node(val);
 
     if (head == NULL) {
@@ -49,6 +48,19 @@ void insert_at_tail(Node *&head, int val) {
 
     temp->next = newNode;
     cout << endl << "Inserted at tail." << endl;
+}
+
+void insert_at_tail(Node *&head, Node *&tail, int val) {
+    Node *newNode = new Node(val);
+
+    if (head == NULL) {
+        head = newNode;
+        tail = newNode;
+        return;
+    }
+
+    tail->next = newNode;
+    tail = newNode;
 }
 
 void insert_at_any_position(Node *&head, int pos, int val) {
@@ -236,41 +248,146 @@ bool is_sorted(Node *head) {
     return flag;
 }
 
-void remove_duplicate(Node * head) {
-    Node * p = head;
-    Node * q = p->next;
+void remove_duplicate(Node *head) {
+    Node *p = head;
+    Node *q = p->next;
 
-    while(q != NULL) {
-        if(p->val == q->val) {
+    while (q != NULL) {
+        if (p->val == q->val) {
             p->next = q->next;
             delete q;
             q = p->next;
-        }else {
+        } else {
             p = q;
             q = q->next;
         }
     }
 
-    cout<<"deleted"<<endl;
+    cout << "deleted" << endl;
+}
+
+void reverse_list_by_elements(Node *head) {
+    Node *p = head;
+    int totalElement = count_node_recursive(head);
+
+    int arr[totalElement];
+    int i = 0;
+
+    while (p != NULL) {
+        arr[i++] = p->val;
+        p = p->next;
+    }
+
+    p = head;
+    i--;
+
+    while (p != NULL) {
+        p->val = arr[i--];
+        p = p->next;
+    }
+}
+
+void reverse_list_by_slider_points(Node *&head) {
+    Node *p = head;
+    Node *q = NULL;
+    Node *r = NULL;
+
+    while (p != NULL) {
+        r = q;
+        q = p;
+        p = p->next;
+
+        q->next = r;
+    }
+
+    head = q;
+}
+
+void reverse_list_by_recursion(Node *q, Node *p, Node *&head) {
+    if (p != NULL) {
+        reverse_list_by_recursion(p, p->next, head);
+        p->next = q;
+    } else {
+        head = q;
+    }
+}
+
+void concatenate_two_list(Node *first, Node *second) {
+    while (first->next != NULL) {
+        first = first->next;
+    }
+
+    first->next = second;
+}
+
+void merge_two_sorted_list(Node *head, Node *second, Node * third) {
+    Node *first = head;
+    Node *last = NULL;
+
+    if (first->val < second->val) {
+        third = first;
+        last = first;
+        first = first->next;
+        last->next = NULL;
+    } else {
+        third = second; 
+        last = second;
+        second = second->next;
+        last->next = NULL;
+    }
+
+    while (first != NULL && second != NULL) {
+        if (first->val < second->val) {
+            last->next = first;
+            last = first;
+            first = first->next;
+            last->next = NULL;
+        } else {
+            last->next = second;
+            last = second;
+            second = second->next;
+            last->next = NULL;
+        }
+    }
+
+    if (first != NULL) last->next = first;
+    if (second != NULL) last->next = second;
+
+    // head = third;
+
+    // display_node(third);
 }
 
 int main() {
     bool flag = true;
     Node *head = NULL;
+    Node *head2 = NULL;
+    Node *third = NULL;
+    Node *tail = NULL;
+    Node *tail2 = NULL;
 
     while (flag) {
         cout << endl << "0. Terminate program" << endl;
-        cout << "1. Create a node." << endl;
-        cout << "2. Insert a node at any position." << endl;
+        // cout << "1. Create a node." << endl;
+        // cout << "2. Insert a node at any position." << endl;
         cout << "3. Display node." << endl;
-        cout << "4. Count all node." << endl;
-        cout << "5. Sum of all node." << endl;
-        cout << "6. Find max value of the list." << endl;
-        cout << "7. Search an element in list." << endl;
-        cout << "8. Insert in a sorted list." << endl;
-        cout << "9. Delete a node." << endl;
-        cout << "10.Check is the list sorted or not." << endl;
-        cout << "11.Remove duplicate element." << endl;
+        // cout << "4. Count all node." << endl;
+        // cout << "5. Sum of all node." << endl;
+        // cout << "6. Find max value of the list." << endl;
+        // cout << "7. Search an element in list." << endl;
+        // cout << "8. Insert in a sorted list." << endl;
+        // cout << "9. Delete a node." << endl;
+        // cout << "10.Check is the list sorted or not." << endl;
+        // cout << "11.Remove duplicate element." << endl;
+        cout << "12.Create multiple node." << endl;
+        // cout << "13.Reverse list using elements." << endl;
+        // cout << "14.Reverse list using slider points." << endl;
+        // cout << "15.Reverse list using recursion." << endl;
+        cout << "16.Create second linked list." << endl;
+        cout << "17.Display two linked list." << endl;
+        cout << "18.Concetenate two linked list." << endl;
+        cout << "19.Merge two sorted linked list." << endl;
+
         cout << endl << "Choose an option: ";
 
         int op;
@@ -284,7 +401,7 @@ int main() {
             cout << "Insert a value: ";
             cin >> val;
 
-            insert_at_tail(head, val);
+            insert_a_node(head, val);
         } else if (op == 2) {
             int pos;
             int value;
@@ -338,16 +455,49 @@ int main() {
             cin >> pos;
 
             delete_node(head, pos);
-        }else if(op == 10) {
+        } else if (op == 10) {
             bool result = is_sorted(head);
 
-            if(result) {
-                cout<<"The list is sorted"<<endl;
-            }else {
-                cout<<"The list is not sorted"<<endl;
+            if (result) {
+                cout << "The list is sorted" << endl;
+            } else {
+                cout << "The list is not sorted" << endl;
             }
-        }else if(op == 11) {
+        } else if (op == 11) {
             remove_duplicate(head);
+        } else if (op == 12) {
+            cout << "Enter a value, write -1 to stop: ";
+            int val;
+
+            while (true) {
+                cin >> val;
+                if (val == -1) break;
+                insert_at_tail(head, tail, val);
+            }
+        } else if (op == 13) {
+            reverse_list_by_elements(head);
+        } else if (op == 14) {
+            reverse_list_by_slider_points(head);
+        } else if (op == 15) {
+            reverse_list_by_recursion(NULL, head, head);
+        } else if (op == 16) {
+            cout << "Enter a value, write -1 to stop: ";
+            int val;
+
+            while (true) {
+                cin >> val;
+                if (val == -1) break;
+                insert_at_tail(head2, tail2, val);
+            }
+        } else if (op == 17) {
+            display_node(head);
+            cout << endl;
+            display_node(head2);
+        } else if (op == 18) {
+            concatenate_two_list(head, head2);
+        }else if(op == 19) {
+            merge_two_sorted_list(head, head2, third);
+            display_node(third);
         }
     }
 
