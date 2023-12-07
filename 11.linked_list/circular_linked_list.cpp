@@ -13,14 +13,14 @@ class Node {
     }
 };
 
-class LinkedList {
+class c_linked_list {
    private:
     Node *head;
 
    public:
-    LinkedList() { head = head->next; };
+    c_linked_list() { head = head->next; };
 
-    LinkedList(int *arr, int size) {
+    c_linked_list(int *arr, int size) {
         Node *newNode = new Node(arr[0]);
         head = newNode;
         head->next = head;
@@ -47,22 +47,6 @@ class LinkedList {
         return len;
     }
 
-    void insertNode(int val) {
-        Node *newNode = new Node(val);
-
-        if (head == NULL) {
-            head = newNode;
-            return;
-        }
-
-        Node *p = head;
-        while (p->next != NULL) {
-            p = p->next;
-        }
-
-        p->next = newNode;
-    }
-
     void display() {
         Node *p = head;
 
@@ -71,14 +55,64 @@ class LinkedList {
             p = p->next;
         } while (p != head);
     }
+
+    void insertNode(int pos, int val) {
+        Node *newNode = new Node(val);
+        Node *p = head;
+
+        if (pos == 0) {
+            newNode->next = head;
+            while (p->next != head) {
+                p = p->next;
+            }
+            p->next = newNode;
+            // If you want to move head also
+            // head = newNode;
+            return;
+        }
+
+        for (int i = 0; i < pos - 1; i++) {
+            p = p->next;
+        }
+
+        newNode->next = p->next;
+        p->next = newNode;
+    }
+
+    void delete_node(int pos) {
+        if (pos < 0 || pos > this->length()) {
+            cout << "Invalid position";
+            return;
+        }
+
+        if (pos == 0) {
+            Node *p = head;
+            while (p->next != head) {
+                p = p->next;
+            }
+
+            p->next = head->next;
+            delete head;
+            head = p->next;
+        }
+    }
 };
 
 int main() {
     int arr[5] = {1, 2, 3, 4, 5};
+    c_linked_list a(arr, 5);
 
-    LinkedList a(arr, 5);
-    // a.display();
-    cout << a.length();
+    cout << "Enter a position: ";
+    int pos;
+    cin >> pos;
+    // cout << "Enter a value: ";
+    // int val;
+    // cin >> val;
+
+    // a.insertNode(pos, val);
+    a.delete_node(pos);
+    a.display();
+    // cout << a.length();
 
     return 0;
 }
