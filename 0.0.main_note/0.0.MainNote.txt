@@ -1,0 +1,13 @@
+* Array operation technique
+1. frequency array/ hash table
+2. two pointer
+3. find multiple missing element technique
+4. prefix sum array
+
+* Linked list operation technique
+1. Extra follower node. (front/back side)
+2. two slider point
+3. reverse list by elements technique. ()
+
+* cycle linked list
+1. hare & tortoise technique (first and slow technique);

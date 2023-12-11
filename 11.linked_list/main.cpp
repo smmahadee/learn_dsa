@@ -374,7 +374,7 @@ int main() {
         // cout << "4. Count all node." << endl;
         // cout << "5. Sum of all node." << endl;
         // cout << "6. Find max value of the list." << endl;
-        // cout << "7. Search an element in list." << endl;
+        cout << "7. Search an element in list." << endl;
         // cout << "8. Insert in a sorted list." << endl;
         // cout << "9. Delete a node." << endl;
         // cout << "10.Check is the list sorted or not." << endl;
