@@ -8,6 +8,7 @@
 1. Extra follower node. (front/back side)
 2. two slider point
 3. reverse list by elements technique. ()
+4. 
 
 * cycle linked list
 1. hare & tortoise technique (first and slow technique);
