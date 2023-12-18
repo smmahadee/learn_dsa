@@ -1,0 +1,3 @@
+** infix to prefix and postfix **
+
+* if we write a + b * c - d , then our compiler at first give this expression "brackets". then calculate. give brackets using higher precedence.
