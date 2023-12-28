@@ -1,13 +1,15 @@
 * Array operation technique
-1. frequency array/ hash table
-2. two pointer
+1. frequency array/ hash table - almost all of the cases the array is unsorted
+2. two pointer - almost all of the cases the array has to be sorted
 3. find multiple missing element technique
 4. prefix sum array
+
+* sum of N natural numbers : n * (n+1) / 2
 
 * Linked list operation technique
 1. Extra follower node. (front/back side)
 2. two slider point
-3. reverse list by elements technique. ()
+3. reverse list by elements technique. (3 slider points)
 4. 
 
 * cycle linked list
