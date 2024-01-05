@@ -1,0 +1,59 @@
+** tree **
+
+* degree - number of direct children of a node.
+* what is the degree of a tree ?
+and: we can't tell the exact degree of tree. but we can say , the degree of a  tree at least 3 by looking the direct children of a root.
+
+* internal nodes - those nodes whose degree is greater than zero.
+* extarnal nodes  - those nodes whose degree is zero.
+* forest - collection of some tree.
+
+**== binary tree ==**
+
+** if heights are given then how many minimum and maximum nodes can created in a tree ?
+ans: minimum nodes will be : n =  h + 1
+    maximum nodes can be : n =  2^h+1 - 1
+
+** if nodes are given then what will be the minimum and maximum heights of the tree ?
+ans: minimum height will be : h =  log(n+1) - 1
+    maximum height will be : h = n - 1
+
+** number of nodes with degree(0) is eual to number of nodes with degree(2) + 1
+
+
+**== strict binary tree ==**
+
+* strict binary tree - means, a tree where all node have no children or exact two children.
+
+* if heights are given then how many minimum and maximum nodes can created in a strict binary tree ?
+ans: minimum nodes will be = 2h + 1
+    maximum nodes will be = 2^h+1 - 1
+
+* if nodes are given then what will be the minimum and maximum heights of the strict binary tree ?
+ans: minimum height will be : log(n+1) - 1
+    maximum height will be : (n -1 ) / 2
+
+* in strict binary tree:  number of nodes with degree(0) is 1 more than degree(2) nodes.
+ex: if degree(2) nodes are = 3 
+    then degree(0) nodes are = 3+1
+
+**== m-ary tree ==**
+
+* if heights are given then how many minimum and maximum nodes can created in a strict binary tree ?
+ans: minimum nodes will be = mh + 1
+    maximum nodes will be = (m^h+1 - 1) / m - 1
+
+
+**== representation of binary tree ==**
+1. by Array
+* if an element stored in an array then ,
+    a. the left child will be the position of - 2 * index ( index of that element)
+    b. the right child wil be the position of - 2 * index + 1
+
+2. by linked list
+
+
+** how many times recursive function will be call in preorder/postorder/inorder ?
+ans: n + n + 1 = 2n + 1 
+n = number of elements
+n + 1 = number of null elements
