@@ -85,6 +85,21 @@ void insert_in_sorted_position(Node* root, int x) {
     }
 }
 
+Node* recursive_insert(Node* p, int key) {
+    if (p == NULL) {
+        return p = new Node(key);
+    }
+
+    if (key < p->val) {
+        p->left = recursive_insert(p->left, key);
+    } else {
+        p->right = recursive_insert(p->right, key);
+    }
+
+    return p;
+}
+
+
 int main() {
     Node* root = input_binary_tree();
     // in_order_recursive(root);

@@ -1,0 +1,4 @@
+** BST **
+1. no duplicates value
+2. inorder gives sorted order
+3. 
